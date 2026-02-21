@@ -108,81 +108,93 @@ export default async function AdminRegistrationsPage({
   });
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">
-          Manage Registrations
+    <div className="container mx-auto py-12 px-4">
+      <div className="mb-12">
+        <h1 className="text-4xl font-extrabold text-primary tracking-tight">
+          Manage <span className="text-gradient">Registrations</span>
         </h1>
-        <p className="text-gray-600 mt-1">
+        <p className="text-gray-600 mt-2 text-lg font-medium">
           {selectedEvent
             ? `Registrations for "${selectedEvent.title}"`
-            : "View and manage all event registrations"}
+            : "Monitor and manage student event participation"}
         </p>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Total Registrations
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <Card className="glass border-white/20 rounded-3xl transition-all hover:shadow-2xl hover:shadow-primary/5 group">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
+            <CardTitle className="text-sm font-bold uppercase tracking-widest text-primary/40">
+              Total Count
             </CardTitle>
-            <TicketIcon className="h-4 w-4 text-muted-foreground" />
+            <div className="h-10 w-10 rounded-xl bg-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <TicketIcon className="h-5 w-5 text-primary" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-3xl font-black text-primary">
               {eventId ? registrations.length : totalRegistrations}
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs font-bold text-gray-400 mt-1 uppercase">
               {eventId ? "For this event" : "All time registrations"}
             </p>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Upcoming Events
+        <Card className="glass border-white/20 rounded-3xl transition-all hover:shadow-2xl hover:shadow-primary/5 group">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
+            <CardTitle className="text-sm font-bold uppercase tracking-widest text-primary/40">
+              Upcoming
             </CardTitle>
-            <CalendarIcon className="h-4 w-4 text-muted-foreground" />
+            <div className="h-10 w-10 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <CalendarIcon className="h-5 w-5 text-secondary" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{upcomingRegistrations}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-3xl font-black text-primary">{upcomingRegistrations}</div>
+            <p className="text-xs font-bold text-gray-400 mt-1 uppercase">
               Active registrations
             </p>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Today's Registrations
+        <Card className="glass border-white/20 rounded-3xl transition-all hover:shadow-2xl hover:shadow-primary/5 group">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
+            <CardTitle className="text-sm font-bold uppercase tracking-widest text-primary/40">
+              Today
             </CardTitle>
-            <UsersIcon className="h-4 w-4 text-muted-foreground" />
+            <div className="h-10 w-10 rounded-xl bg-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <UsersIcon className="h-5 w-5 text-primary" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{todayRegistrations}</div>
-            <p className="text-xs text-muted-foreground">Registered today</p>
+            <div className="text-3xl font-black text-primary">{todayRegistrations}</div>
+            <p className="text-xs font-bold text-gray-400 mt-1 uppercase">Registered today</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Selected Event Info */}
       {selectedEvent && (
-        <Card className="mb-6 bg-blue-50 border-blue-200">
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <div>
-                <CardTitle className="text-blue-900">
-                  {selectedEvent.title}
-                </CardTitle>
-                <CardDescription className="text-blue-700">
-                  {formatDateTime(selectedEvent.date)} • {selectedEvent.venue}
-                </CardDescription>
+        <Card className="mb-8 glass border-secondary/20 bg-secondary/5 rounded-3xl overflow-hidden shadow-xl shadow-secondary/5">
+          <CardHeader className="p-8">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="flex items-center space-x-5">
+                <div className="h-14 w-14 rounded-2xl bg-secondary flex items-center justify-center shadow-lg shadow-secondary/20">
+                  <CalendarIcon className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-2xl font-black text-primary tracking-tight">
+                    {selectedEvent.title}
+                  </CardTitle>
+                  <CardDescription className="text-primary/60 font-bold flex items-center mt-1">
+                    <span className="text-secondary mr-2">•</span>
+                    {formatDateTime(selectedEvent.date)} <span className="mx-2">|</span> {selectedEvent.venue}
+                  </CardDescription>
+                </div>
               </div>
               <Link href="/admin/registrations">
-                <Button variant="outline" size="sm">
+                <Button variant="outline" className="rounded-2xl glass border-primary/10 text-primary font-bold px-6 h-12 transition-all hover:bg-primary/5">
                   View All Registrations
                 </Button>
               </Link>
@@ -192,98 +204,100 @@ export default async function AdminRegistrationsPage({
       )}
 
       {/* Filters */}
-      <Card className="mb-6">
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle className="text-lg">Filter Registrations</CardTitle>
+      <Card className="mb-8 glass border-white/20 rounded-3xl overflow-hidden shadow-2xl shadow-primary/5">
+        <CardHeader className="bg-primary/5 border-b border-primary/10 p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <CardTitle className="text-xl font-bold text-primary tracking-tight">Filter Registrations</CardTitle>
             <ExportRegistrationsButton
               registrations={registrations}
               eventTitle={selectedEvent?.title}
             />
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-6">
           <RegistrationsFilter events={events} />
         </CardContent>
       </Card>
 
       {/* Registrations Table */}
-      <Card>
-        <CardHeader>
-          <CardTitle>
+      <Card className="glass border-white/20 rounded-3xl overflow-hidden shadow-2xl shadow-primary/5">
+        <CardHeader className="bg-primary/5 border-b border-primary/10 p-6">
+          <CardTitle className="text-xl font-bold text-primary">
             {selectedEvent
-              ? `Registrations for ${selectedEvent.title}`
-              : "All Registrations"}{" "}
+              ? "Participants"
+              : "Global Ledger"}{" "}
             ({registrations.length})
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-primary/40 font-bold uppercase text-[10px] tracking-widest mt-1">
             {selectedEvent
-              ? "Students registered for this event"
-              : "All event registrations in the system"}
+              ? "Students registered for this specific experience"
+              : "Consolidated record of all event enrollment"}
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-0">
           {registrations.length === 0 ? (
-            <div className="text-center py-12">
-              <TicketIcon className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-medium text-gray-900 mb-2">
-                No registrations found
-              </h3>{" "}
-              <p className="text-gray-500 mb-6">
+            <div className="text-center py-24">
+              <div className="h-20 w-20 bg-primary/5 rounded-full flex items-center justify-center mx-auto mb-6">
+                <TicketIcon className="h-10 w-10 text-primary/40" />
+              </div>
+              <h3 className="text-2xl font-bold text-primary mb-3">
+                No records found
+              </h3>
+              <p className="text-gray-500 font-medium max-w-sm mx-auto">
                 {search || status || eventId
                   ? "Try adjusting your filters to see more results"
-                  : "No students have registered for events yet"}
+                  : "Attendance log is currently empty."}
               </p>
               {!eventId && (
                 <Link href="/admin/events">
-                  <Button>Manage Events</Button>
+                  <Button className="mt-8 bg-primary hover:bg-secondary rounded-2xl font-bold px-8">Manage Events</Button>
                 </Link>
               )}
             </div>
           ) : (
             <div className="overflow-x-auto">
               <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Student</TableHead>
-                    <TableHead>Event</TableHead>
-                    <TableHead>Registration Date</TableHead>
-                    <TableHead>Event Date</TableHead>
-                    <TableHead>Ticket ID</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
+                <TableHeader className="bg-primary/5">
+                  <TableRow className="hover:bg-transparent border-primary/5">
+                    <TableHead className="py-4 pl-6 text-primary font-bold uppercase text-[10px] tracking-widest">Student</TableHead>
+                    <TableHead className="py-4 text-primary font-bold uppercase text-[10px] tracking-widest">Event</TableHead>
+                    <TableHead className="py-4 text-primary font-bold uppercase text-[10px] tracking-widest">Registration Date</TableHead>
+                    <TableHead className="py-4 text-primary font-bold uppercase text-[10px] tracking-widest">Event Date</TableHead>
+                    <TableHead className="py-4 text-primary font-bold uppercase text-[10px] tracking-widest">Ticket ID</TableHead>
+                    <TableHead className="py-4 text-primary font-bold uppercase text-[10px] tracking-widest">Status</TableHead>
+                    <TableHead className="py-4 pr-6 text-right text-primary font-bold uppercase text-[10px] tracking-widest">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {registrations.map((registration) => (
-                    <TableRow key={registration.id}>
-                      <TableCell>
+                    <TableRow key={registration.id} className="hover:bg-primary/[0.02] border-primary/5 transition-colors">
+                      <TableCell className="py-5 pl-6">
                         <div>
-                          <div className="font-medium">
+                          <div className="font-bold text-primary">
                             {registration.user.name}
                           </div>
-                          <div className="text-sm text-gray-500">
+                          <div className="text-secondary font-bold text-[10px] uppercase tracking-wider">
                             {registration.user.jisid}
                           </div>
-                          <div className="text-sm text-gray-500">
+                          <div className="text-[10px] text-primary/40 font-bold uppercase mt-0.5">
                             {registration.user.email}
                           </div>
                         </div>
                       </TableCell>
-                      <TableCell>
-                        <div>
-                          <div className="font-medium">
+                      <TableCell className="py-5">
+                        <div className="max-w-[150px]">
+                          <div className="font-bold text-primary line-clamp-1">
                             {registration.event.title}
                           </div>
-                          <div className="text-sm text-gray-500">
+                          <div className="text-primary/40 font-bold text-[10px] uppercase tracking-wider line-clamp-1">
                             {registration.event.venue}
                           </div>
                         </div>
                       </TableCell>
-                      <TableCell>
-                        <div className="text-sm">
+                      <TableCell className="py-5">
+                        <div className="text-sm font-bold text-primary">
                           {formatDate(registration.createdAt)}
-                          <div className="text-gray-500">
+                          <div className="text-primary/40 font-bold text-[10px] uppercase tracking-wider">
                             {new Date(
                               registration.createdAt
                             ).toLocaleTimeString([], {
@@ -293,10 +307,10 @@ export default async function AdminRegistrationsPage({
                           </div>
                         </div>
                       </TableCell>
-                      <TableCell>
-                        <div className="text-sm">
+                      <TableCell className="py-5">
+                        <div className="text-sm font-bold text-primary">
                           {formatDate(registration.event.date)}
-                          <div className="text-gray-500">
+                          <div className="text-secondary font-bold text-[10px] uppercase tracking-wider">
                             {new Date(
                               registration.event.date
                             ).toLocaleTimeString([], {
@@ -306,30 +320,29 @@ export default async function AdminRegistrationsPage({
                           </div>
                         </div>
                       </TableCell>
-                      <TableCell>
-                        <code className="text-xs bg-gray-100 px-2 py-1 rounded">
+                      <TableCell className="py-5">
+                        <code className="text-xs bg-primary/5 text-primary font-bold px-3 py-1 rounded-full border border-primary/10">
                           {registration.ticketId}
                         </code>
                       </TableCell>
-                      <TableCell>
+                      <TableCell className="py-5">
                         <Badge
-                          variant={
-                            new Date(registration.event.date) > new Date()
-                              ? "default"
-                              : "secondary"
-                          }
+                          className={`${new Date(registration.event.date) > new Date()
+                              ? "bg-secondary text-white"
+                              : "bg-primary/10 text-primary/40"
+                            } border-none font-bold py-1 px-3 rounded-full`}
                         >
                           {new Date(registration.event.date) > new Date()
                             ? "Active"
                             : "Completed"}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-right">
+                      <TableCell className="py-5 pr-6 text-right">
                         <div className="flex items-center justify-end space-x-2">
                           <Link
                             href={`/dashboard/tickets/${registration.ticketId}`}
                           >
-                            <Button variant="outline" size="sm">
+                            <Button variant="outline" size="sm" className="rounded-xl glass border-primary/10 text-primary font-bold hover:bg-primary/5 transition-all">
                               View Ticket
                             </Button>
                           </Link>

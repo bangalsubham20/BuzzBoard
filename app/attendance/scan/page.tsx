@@ -10,16 +10,18 @@ export default async function AttendanceScanPage() {
   await requireAdmin();
 
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div className="container mx-auto py-12 px-4">
       <div className="max-w-2xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">Scan Attendance</h1>
-          <p className="text-gray-600 mt-1">
+        <div className="mb-12">
+          <h1 className="text-4xl font-extrabold text-primary tracking-tight">Scan <span className="text-gradient">Attendance</span></h1>
+          <p className="text-gray-600 mt-2 text-lg font-medium">
             Scan student QR codes to mark attendance for events
           </p>
         </div>
 
-        <AttendanceScanner />
+        <Card className="glass border-white/20 rounded-3xl overflow-hidden shadow-2xl shadow-primary/5">
+          <AttendanceScanner />
+        </Card>
       </div>
     </div>
   );

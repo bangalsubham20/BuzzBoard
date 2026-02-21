@@ -200,7 +200,7 @@ export default async function DashboardPage() {
                             {registration.event.title}
                           </h4>
                           <p className="text-sm text-gray-500 font-bold mt-0.5">
-                            Joined {new Date(registration.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
+                            Joined {new Date(registration.createdAt).toLocaleDateString("en-US", { month: 'short', day: 'numeric' })}
                           </p>
                         </div>
                         <Badge

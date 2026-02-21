@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,66 +8,61 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(cuid())
-  name     String
-  email    String   @unique
-  jisid    String   @unique
-  password String
-  role     Role     @default(STUDENT)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
-  events            Event[]        @relation("OrganizedEvents")
-  registrations     Registration[]
-  markedAttendance  Attendance[]   @relation("MarkedAttendance")
+  id               String         @id @default(cuid())
+  name             String
+  email            String         @unique
+  jisid            String         @unique
+  password         String
+  role             Role           @default(STUDENT)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  markedAttendance Attendance[]   @relation("MarkedAttendance")
+  events           Event[]        @relation("OrganizedEvents")
+  registrations    Registration[]
 
   @@map("users")
 }
 
 model Event {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  date        DateTime
-  venue       String
-  createdBy   String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  // Relations
+  id            String         @id @default(cuid())
+  title         String
+  description   String
+  date          DateTime
+  venue         String
+  createdBy     String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   organizer     User           @relation("OrganizedEvents", fields: [createdBy], references: [id], onDelete: Cascade)
   registrations Registration[]
 
+  @@index([createdBy], map: "events_createdBy_fkey")
   @@map("events")
 }
 
 model Registration {
-  id        String   @id @default(cuid())
-  userId    String
-  eventId   String
-  ticketId  String   @unique @default(cuid())
-  createdAt DateTime @default(now())
-
-  // Relations
-  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  event      Event       @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  id         String      @id @default(cuid())
+  userId     String
+  eventId    String
+  ticketId   String      @unique @default(cuid())
+  createdAt  DateTime    @default(now())
   attendance Attendance?
+  event      Event       @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, eventId])
+  @@index([eventId], map: "registrations_eventId_fkey")
   @@map("registrations")
 }
 
 model Attendance {
-  id             String   @id @default(cuid())
-  registrationId String   @unique
-  markedAt       DateTime @default(now())
+  id             String       @id @default(cuid())
+  registrationId String       @unique
+  markedAt       DateTime     @default(now())
   markedBy       String
+  markedByUser   User         @relation("MarkedAttendance", fields: [markedBy], references: [id])
+  registration   Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
 
-  // Relations
-  registration Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
-  markedByUser User         @relation("MarkedAttendance", fields: [markedBy], references: [id])
-
+  @@index([markedBy], map: "attendance_markedBy_fkey")
   @@map("attendance")
 }
 

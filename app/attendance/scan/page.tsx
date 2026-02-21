@@ -19,9 +19,7 @@ export default async function AttendanceScanPage() {
           </p>
         </div>
 
-        <Card className="glass border-white/20 rounded-3xl overflow-hidden shadow-2xl shadow-primary/5">
-          <AttendanceScanner />
-        </Card>
+        <AttendanceScanner />
       </div>
     </div>
   );

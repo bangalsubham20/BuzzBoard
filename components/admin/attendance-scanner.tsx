@@ -128,7 +128,7 @@ export function AttendanceScanner() {
     setIsScannerOpen(false);
     // Create a synthetic form event to trigger handleScan
     const syntheticEvent = {
-      preventDefault: () => {},
+      preventDefault: () => { },
     } as React.FormEvent;
     handleScan(syntheticEvent);
   };
@@ -136,17 +136,17 @@ export function AttendanceScanner() {
   return (
     <div className="space-y-6">
       {/* Scanner Form */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center">
-            <ScanIcon className="h-5 w-5 mr-2" />
+      <Card className="glass border-white/20 rounded-3xl overflow-hidden shadow-2xl shadow-primary/5">
+        <CardHeader className="bg-primary/5 border-b border-primary/10 p-8">
+          <CardTitle className="text-2xl font-bold text-primary flex items-center">
+            <ScanIcon className="h-6 w-6 mr-3 text-secondary" />
             QR Code Scanner
           </CardTitle>
-          <CardDescription>
-            Enter or scan the ticket ID to mark attendance
+          <CardDescription className="text-primary/40 font-bold uppercase text-[10px] tracking-widest mt-1">
+            Validate experience access in real-time
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-8">
           <form onSubmit={handleScan} className="space-y-4">
             <div className="flex gap-2">
               <Input
@@ -210,17 +210,17 @@ export function AttendanceScanner() {
 
       {/* Recent Attendance */}
       {recentAttendance.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center">
-              <UserCheckIcon className="h-5 w-5 mr-2" />
-              Recent Attendance
+        <Card className="glass border-white/20 rounded-3xl overflow-hidden shadow-xl shadow-primary/5">
+          <CardHeader className="bg-primary/5 border-b border-primary/10 p-6">
+            <CardTitle className="text-xl font-bold text-primary flex items-center">
+              <UserCheckIcon className="h-5 w-5 mr-3 text-secondary" />
+              Recent Validations
             </CardTitle>
-            <CardDescription>
-              Recently marked attendance in this session
+            <CardDescription className="text-primary/40 font-bold uppercase text-[10px] tracking-widest mt-1">
+              Recently processed in this session
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-6">
             <div className="space-y-3">
               {recentAttendance.map((attendance, index) => (
                 <div
@@ -244,11 +244,11 @@ export function AttendanceScanner() {
       )}
 
       {/* Instructions */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Instructions</CardTitle>
+      <Card className="glass border-white/20 rounded-3xl overflow-hidden shadow-xl shadow-primary/5">
+        <CardHeader className="bg-primary/5 border-b border-primary/10 p-6">
+          <CardTitle className="text-xl font-bold text-primary">Operational Protocol</CardTitle>
         </CardHeader>
-        <CardContent className="text-sm text-gray-600 space-y-2">
+        <CardContent className="p-6 text-sm text-gray-600 space-y-3 font-medium">
           <p>• Students should show their QR code from their ticket</p>
           <p>
             • You can manually enter the ticket ID or use the camera to scan QR

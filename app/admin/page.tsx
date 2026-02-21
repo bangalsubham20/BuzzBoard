@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { PlusIcon, CalendarIcon, UsersIcon, SettingsIcon, MapPinIcon } from "lucide-react";
+import { PlusIcon, CalendarIcon, UsersIcon, SettingsIcon, MapPinIcon, TrendingUpIcon } from "lucide-react";
 import Link from "next/link";
 import { formatDate, isEventUpcoming } from "@/lib/utils";
 import { prisma } from "@/lib/prisma";
@@ -143,12 +143,13 @@ export default async function AdminPage() {
           {/* Quick Actions */}
           <section>
             <h2 className="text-2xl font-extrabold text-primary tracking-tight mb-8">Administrative Suite</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
                 { label: "Create Event", href: "/admin/events/create", icon: PlusIcon, bg: "primary/10", text: "primary" },
                 { label: "Manage Inventory", href: "/admin/events", icon: CalendarIcon, bg: "secondary/10", text: "secondary" },
                 { label: "User Directory", href: "/admin/users", icon: UsersIcon, bg: "primary/10", text: "primary" },
-                { label: "Registration Log", href: "/admin/registrations", icon: SettingsIcon, bg: "secondary/10", text: "secondary" }
+                { label: "Registration Log", href: "/admin/registrations", icon: SettingsIcon, bg: "secondary/10", text: "secondary" },
+                { label: "Analytics Hub", href: "/admin/analytics", icon: TrendingUpIcon, bg: "primary/10", text: "primary" }
               ].map((action, i) => (
                 <Link key={i} href={action.href}>
                   <Button

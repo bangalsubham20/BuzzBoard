@@ -109,22 +109,22 @@ export function EditEventForm({ event }: EditEventFormProps) {
   return (
     <>
       {error && (
-        <Alert variant="destructive" className="mb-6">
-          <AlertCircle className="h-4 w-4" />
-          <AlertDescription>{error}</AlertDescription>
+        <Alert variant="destructive" className="mb-8 rounded-2xl border-2">
+          <AlertCircle className="h-5 w-5" />
+          <AlertDescription className="font-bold ml-2">{error}</AlertDescription>
         </Alert>
       )}
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
             control={form.control}
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Event Title</FormLabel>
+                <FormLabel className="text-sm font-black uppercase tracking-widest text-primary/60">Experience Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Annual Tech Fest 2024" {...field} />
+                  <Input placeholder="Annual Tech Fest 2024" className="h-14 rounded-2xl border-primary/10 glass focus:ring-primary/20 focus:border-primary/30 font-bold text-primary placeholder:text-primary/20" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -136,11 +136,11 @@ export function EditEventForm({ event }: EditEventFormProps) {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel className="text-sm font-black uppercase tracking-widest text-primary/60">Storyline & Details</FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="Describe the event, its purpose, and what attendees can expect..."
-                    className="min-h-[100px]"
+                    className="min-h-[150px] rounded-2xl border-primary/10 glass focus:ring-primary/20 focus:border-primary/30 font-bold text-primary placeholder:text-primary/20 p-4"
                     {...field}
                   />
                 </FormControl>
@@ -149,15 +149,15 @@ export function EditEventForm({ event }: EditEventFormProps) {
             )}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField
               control={form.control}
               name="date"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Date</FormLabel>
+                  <FormLabel className="text-sm font-black uppercase tracking-widest text-primary/60">Date</FormLabel>
                   <FormControl>
-                    <Input type="date" {...field} />
+                    <Input type="date" className="h-14 rounded-2xl border-primary/10 glass focus:ring-primary/20 focus:border-primary/30 font-bold text-primary" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -169,9 +169,9 @@ export function EditEventForm({ event }: EditEventFormProps) {
               name="time"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Time</FormLabel>
+                  <FormLabel className="text-sm font-black uppercase tracking-widest text-primary/60">Time</FormLabel>
                   <FormControl>
-                    <Input type="time" {...field} />
+                    <Input type="time" className="h-14 rounded-2xl border-primary/10 glass focus:ring-primary/20 focus:border-primary/30 font-bold text-primary" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -184,24 +184,24 @@ export function EditEventForm({ event }: EditEventFormProps) {
             name="venue"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Venue</FormLabel>
+                <FormLabel className="text-sm font-black uppercase tracking-widest text-primary/60">Current Venue</FormLabel>
                 <FormControl>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="h-14 rounded-2xl border-primary/10 glass focus:ring-primary/20 focus:border-primary/30 font-bold text-primary">
                       <SelectValue placeholder="Select a venue" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Auditorium">Auditorium</SelectItem>
-                      <SelectItem value="Seminar Hall">Seminar Hall</SelectItem>
-                      <SelectItem value="Sports Ground">
+                    <SelectContent className="glass border-white/20 rounded-2xl">
+                      <SelectItem value="Auditorium" className="rounded-xl focus:bg-primary/5">Auditorium</SelectItem>
+                      <SelectItem value="Seminar Hall" className="rounded-xl focus:bg-primary/5">Seminar Hall</SelectItem>
+                      <SelectItem value="Sports Ground" className="rounded-xl focus:bg-primary/5">
                         Sports Ground
                       </SelectItem>
-                      <SelectItem value="Computer Lab">Computer Lab</SelectItem>
-                      <SelectItem value="Library">Library</SelectItem>
-                      <SelectItem value="Conference Room">
+                      <SelectItem value="Computer Lab" className="rounded-xl focus:bg-primary/5">Computer Lab</SelectItem>
+                      <SelectItem value="Library" className="rounded-xl focus:bg-primary/5">Library</SelectItem>
+                      <SelectItem value="Conference Room" className="rounded-xl focus:bg-primary/5">
                         Conference Room
                       </SelectItem>
                     </SelectContent>
@@ -212,14 +212,15 @@ export function EditEventForm({ event }: EditEventFormProps) {
             )}
           />
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-6">
-            <Button type="submit" className="flex-1" disabled={isLoading}>
-              {isLoading ? "Updating Event..." : "Update Event"}
+          <div className="flex flex-col sm:flex-row gap-4 pt-8">
+            <Button type="submit" disabled={isLoading} className="h-14 flex-1 rounded-2xl bg-primary hover:bg-secondary text-white font-bold shadow-lg shadow-primary/20 transition-all">
+              {isLoading ? "Synchronizing..." : "Update Experience"}
             </Button>
             <Button
               type="button"
               variant="outline"
-              className="flex-1"
+              disabled={isLoading}
+              className="h-14 flex-1 rounded-2xl glass border-primary/10 text-primary font-bold hover:bg-primary/5 transition-all"
               onClick={() => router.push("/admin/events")}
             >
               Cancel

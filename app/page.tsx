@@ -20,7 +20,7 @@ export default function Home() {
       <div className="container mx-auto py-12 px-4">
         {/* Hero Section */}
         <section className="relative py-20 md:py-32 overflow-hidden rounded-3xl mb-16">
-          <div className="absolute inset-0 bg-blue-600/5 -z-10 blur-3xl opacity-50" />
+          <div className="absolute inset-0 bg-primary/5 -z-10 blur-3xl opacity-50" />
           <div className="container px-4 md:px-6 relative z-10">
             <div className="flex flex-col items-center justify-center space-y-8 text-center">
               <motion.div
@@ -29,14 +29,14 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 className="space-y-4"
               >
-                <Badge variant="outline" className="px-4 py-1 text-blue-600 border-blue-200 bg-blue-50/50 backdrop-blur-sm rounded-full">
+                <Badge variant="outline" className="px-4 py-1 text-primary border-primary/20 bg-white/50 backdrop-blur-sm rounded-full">
                   Campus Life Reimagined
                 </Badge>
                 <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                  <span className="block">JIS College</span>
+                  <span className="block text-primary">JIS College</span>
                   <span className="text-gradient">BuzzBoard</span>
                 </h1>
-                <p className="mx-auto max-w-[800px] text-gray-500 md:text-xl/relaxed lg:text-2xl/relaxed font-medium">
+                <p className="mx-auto max-w-[800px] text-gray-600 md:text-xl/relaxed lg:text-2xl/relaxed font-medium">
                   Your hub for discovery, connection, and growth. Stay updated with the pulse of JIS College of Engineering.
                 </p>
               </motion.div>
@@ -48,12 +48,12 @@ export default function Home() {
                 className="flex flex-wrap items-center justify-center gap-6"
               >
                 <Link href="/events">
-                  <Button size="lg" className="h-14 px-8 text-lg bg-blue-600 hover:bg-blue-700 shadow-xl shadow-blue-500/20 transition-all hover:scale-105 active:scale-95">
+                  <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-secondary shadow-xl shadow-primary/20 transition-all hover:scale-105 active:scale-95">
                     Explore Events
                   </Button>
                 </Link>
                 <Link href="/auth/register">
-                  <Button size="lg" variant="outline" className="h-14 px-8 text-lg glass transition-all hover:scale-105 active:scale-95">
+                  <Button size="lg" variant="outline" className="h-14 px-8 text-lg glass border-primary/10 text-primary transition-all hover:scale-105 active:scale-95">
                     Join Community
                   </Button>
                 </Link>
@@ -72,11 +72,11 @@ export default function Home() {
         >
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Upcoming Buzz</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">Upcoming Buzz</h2>
               <p className="text-gray-500 mt-2 text-lg">Don't miss out on what's happening this month.</p>
             </div>
             <Link href="/events">
-              <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 group text-lg">
+              <Button variant="ghost" className="text-primary hover:text-secondary hover:bg-secondary/10 group text-lg">
                 View all events
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -123,9 +123,9 @@ export default function Home() {
             <motion.div
               key={i}
               whileHover={{ y: -5 }}
-              className="glass p-8 rounded-3xl transition-all hover:shadow-2xl hover:shadow-blue-500/5 group"
+              className="glass p-8 rounded-3xl transition-all hover:shadow-2xl hover:shadow-primary/5 group"
             >
-              <div className="h-14 w-14 rounded-2xl bg-blue-100/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <div className="h-14 w-14 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="28"
@@ -136,12 +136,12 @@ export default function Home() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-blue-600"
+                  className="text-primary"
                 >
                   {feature.icon}
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+              <h3 className="text-xl font-bold text-primary mb-3">{feature.title}</h3>
               <p className="text-gray-500 leading-relaxed">{feature.desc}</p>
             </motion.div>
           ))}

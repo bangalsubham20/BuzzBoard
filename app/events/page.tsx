@@ -22,15 +22,15 @@ export default async function EventsPage({
       <div className="container mx-auto py-12 px-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12 gap-6">
           <div>
-            <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">
+            <h1 className="text-4xl font-extrabold text-primary tracking-tight">
               Event <span className="text-gradient">Explorer</span>
             </h1>
-            <p className="text-gray-500 mt-2 text-lg font-medium">
+            <p className="text-gray-600 mt-2 text-lg font-medium">
               Discover and participate in upcoming campus experiences.
             </p>
           </div>
           <div className="w-full md:w-auto">
-            <Suspense fallback={<div className="h-10 w-48 bg-gray-200 animate-pulse rounded-2xl" />}>
+            <Suspense fallback={<div className="h-10 w-48 bg-primary/5 animate-pulse rounded-2xl" />}>
               <EventsFilter />
             </Suspense>
           </div>

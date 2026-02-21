@@ -63,14 +63,15 @@ export default async function EventPage({
       <div className="max-w-4xl mx-auto">
         <div className="mb-6">
           <Link href="/events">
-            <Button variant="link" className="pl-0 text-blue-600">
+            <Button variant="link" className="pl-0 text-primary hover:text-secondary font-bold transition-colors">
               ← Back to Events
             </Button>
           </Link>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-          <div className="h-64 bg-blue-100 flex items-center justify-center">
+        <div className="glass border-white/20 rounded-3xl overflow-hidden shadow-2xl shadow-primary/5">
+          <div className="h-64 bg-secondary/10 flex items-center justify-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-primary-gradient opacity-5" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="96"
@@ -78,10 +79,10 @@ export default async function EventPage({
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1"
+              strokeWidth="0.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-blue-500"
+              className="text-secondary/50 relative z-10"
             >
               <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
               <path d="M18 14h-8" />
@@ -90,33 +91,37 @@ export default async function EventPage({
             </svg>
           </div>
 
-          <div className="p-6">
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">
+          <div className="p-8">
+            <h1 className="text-4xl font-extrabold text-primary mb-6 tracking-tight">
               {event.title}
             </h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <Card>
-                <CardContent className="p-4">
-                  <div className="flex flex-col space-y-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+              <Card className="glass border-primary/5 rounded-2xl">
+                <CardContent className="p-5">
+                  <div className="flex flex-col space-y-4">
                     <div className="flex items-center">
-                      <CalendarIcon className="h-5 w-5 text-blue-600 mr-3" />
+                      <div className="h-10 w-10 rounded-xl bg-secondary/10 flex items-center justify-center mr-4">
+                        <CalendarIcon className="h-5 w-5 text-secondary" />
+                      </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-500">
+                        <p className="text-xs font-bold uppercase tracking-wider text-primary/40">
                           Date
                         </p>
-                        <p className="text-gray-900">
+                        <p className="text-primary font-bold">
                           {formatDate(event.date)}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center">
-                      <ClockIcon className="h-5 w-5 text-blue-600 mr-3" />
+                      <div className="h-10 w-10 rounded-xl bg-primary/5 flex items-center justify-center mr-4">
+                        <ClockIcon className="h-5 w-5 text-primary" />
+                      </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-500">
+                        <p className="text-xs font-bold uppercase tracking-wider text-primary/40">
                           Time
                         </p>
-                        <p className="text-gray-900">
+                        <p className="text-primary font-bold">
                           {new Date(event.date).toLocaleTimeString([], {
                             hour: "2-digit",
                             minute: "2-digit",
@@ -128,25 +133,29 @@ export default async function EventPage({
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardContent className="p-4">
-                  <div className="flex flex-col space-y-3">
+              <Card className="glass border-primary/5 rounded-2xl">
+                <CardContent className="p-5">
+                  <div className="flex flex-col space-y-4">
                     <div className="flex items-center">
-                      <MapPinIcon className="h-5 w-5 text-blue-600 mr-3" />
+                      <div className="h-10 w-10 rounded-xl bg-secondary/10 flex items-center justify-center mr-4">
+                        <MapPinIcon className="h-5 w-5 text-secondary" />
+                      </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-500">
+                        <p className="text-xs font-bold uppercase tracking-wider text-primary/40">
                           Venue
                         </p>
-                        <p className="text-gray-900">{event.venue}</p>
+                        <p className="text-primary font-bold">{event.venue}</p>
                       </div>
                     </div>
                     <div className="flex items-center">
-                      <UserIcon className="h-5 w-5 text-blue-600 mr-3" />
+                      <div className="h-10 w-10 rounded-xl bg-primary/5 flex items-center justify-center mr-4">
+                        <UserIcon className="h-5 w-5 text-primary" />
+                      </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-500">
+                        <p className="text-xs font-bold uppercase tracking-wider text-primary/40">
                           Organizer
                         </p>
-                        <p className="text-gray-900">
+                        <p className="text-primary font-bold">
                           {organizer?.name || "JIS College"}
                         </p>
                       </div>
@@ -156,16 +165,18 @@ export default async function EventPage({
               </Card>
             </div>
 
-            <div className="mb-8">
-              <h2 className="text-xl font-semibold text-gray-800 mb-3">
+            <div className="mb-10">
+              <h2 className="text-2xl font-bold text-primary mb-4 tracking-tight">
                 About this event
               </h2>
-              <p className="text-gray-600 whitespace-pre-line">
-                {event.description}
-              </p>
+              <div className="prose prose-slate max-w-none">
+                <p className="text-gray-600 whitespace-pre-line leading-relaxed text-lg font-medium">
+                  {event.description}
+                </p>
+              </div>
             </div>
 
-            <Separator className="my-6" />
+            <Separator className="my-10 bg-primary/5" />
 
             <div className="flex justify-center">
               <RegisterButton

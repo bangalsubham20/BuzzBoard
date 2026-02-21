@@ -28,7 +28,7 @@ export function Header() {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="flex items-center group">
-            <div className="h-10 w-10 rounded-xl bg-blue-600 flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform shadow-lg shadow-blue-500/20">
+            <div className="h-10 w-10 rounded-xl bg-primary flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform shadow-lg shadow-primary/20">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -43,8 +43,8 @@ export function Header() {
                 <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
               </svg>
             </div>
-            <span className="text-2xl font-black tracking-tight text-gray-900 group-hover:text-blue-600 transition-colors">
-              Buzz<span className="text-blue-600">Board</span>
+            <span className="text-2xl font-black tracking-tight text-primary group-hover:text-secondary transition-colors">
+              Buzz<span className="text-secondary">Board</span>
             </span>
           </Link>
           <nav className="hidden md:flex ml-12 space-x-8">
@@ -62,15 +62,15 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-bold tracking-wide uppercase transition-all relative py-1 ${link.active
-                  ? "text-blue-600"
-                  : "text-gray-500 hover:text-blue-600"
+                  ? "text-primary"
+                  : "text-gray-500 hover:text-primary"
                   }`}
               >
                 {link.label}
                 {link.active && (
                   <motion.div
                     layoutId="nav-active"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 rounded-full"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
                   />
                 )}
               </Link>
@@ -83,10 +83,10 @@ export function Header() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="relative h-10 w-10 rounded-2xl hover:bg-blue-50 transition-colors p-0"
+                  className="relative h-10 w-10 rounded-2xl hover:bg-secondary/10 transition-colors p-0"
                 >
                   <Avatar className="h-10 w-10 border-2 border-white shadow-sm">
-                    <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-bold">
+                    <AvatarFallback className="bg-primary-gradient text-white font-bold">
                       {session.user?.name?.charAt(0).toUpperCase() || "U"}
                     </AvatarFallback>
                   </Avatar>
@@ -95,7 +95,7 @@ export function Header() {
               <DropdownMenuContent className="w-64 glass border-white/20 rounded-3xl p-2 mt-2" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal px-4 py-4">
                   <div className="flex flex-col space-y-1">
-                    <p className="text-base font-bold text-gray-900 leading-none">
+                    <p className="text-base font-bold text-primary leading-none">
                       {session.user?.name}
                     </p>
                     <p className="text-xs font-medium text-gray-500 leading-none mt-1 uppercase tracking-wider">
@@ -105,15 +105,15 @@ export function Header() {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator className="bg-black/5" />
                 <div className="p-1">
-                  <DropdownMenuItem asChild className="rounded-2xl cursor-pointer hover:bg-blue-50 focus:bg-blue-50 transition-colors h-11">
+                  <DropdownMenuItem asChild className="rounded-2xl cursor-pointer hover:bg-secondary/10 focus:bg-secondary/10 transition-colors h-11">
                     <Link href="/dashboard" className="font-bold text-gray-700">Student Dashboard</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="rounded-2xl cursor-pointer hover:bg-blue-50 focus:bg-blue-50 transition-colors h-11">
+                  <DropdownMenuItem asChild className="rounded-2xl cursor-pointer hover:bg-secondary/10 focus:bg-secondary/10 transition-colors h-11">
                     <Link href="/dashboard/tickets" className="font-bold text-gray-700">My Tickets</Link>
                   </DropdownMenuItem>
                   {session.user?.role === "ADMIN" && (
-                    <DropdownMenuItem asChild className="rounded-2xl cursor-pointer hover:bg-blue-50 focus:bg-blue-50 transition-colors h-11">
-                      <Link href="/admin" className="font-bold text-gray-700 text-blue-600">Admin Control Panel</Link>
+                    <DropdownMenuItem asChild className="rounded-2xl cursor-pointer hover:bg-secondary/10 focus:bg-secondary/10 transition-colors h-11">
+                      <Link href="/admin" className="font-bold text-primary">Admin Control Panel</Link>
                     </DropdownMenuItem>
                   )}
                 </div>
@@ -131,12 +131,12 @@ export function Header() {
           ) : (
             <div className="flex items-center gap-2">
               <Link href="/auth/login">
-                <Button variant="ghost" className="font-bold text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-2xl px-6">
+                <Button variant="ghost" className="font-bold text-primary hover:text-secondary hover:bg-secondary/10 rounded-2xl px-6">
                   Login
                 </Button>
               </Link>
               <Link href="/auth/register">
-                <Button className="bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 font-bold rounded-2xl px-6 transition-all hover:scale-105 active:scale-95">
+                <Button className="bg-primary hover:bg-secondary shadow-lg shadow-primary/20 font-bold rounded-2xl px-6 transition-all hover:scale-105 active:scale-95">
                   Join Now
                 </Button>
               </Link>

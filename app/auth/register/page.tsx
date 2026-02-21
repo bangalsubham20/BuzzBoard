@@ -98,9 +98,9 @@ export default function RegisterPage() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-md"
       >
-        <Card className="glass border-white/20 rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/10">
+        <Card className="glass border-white/20 rounded-3xl overflow-hidden shadow-2xl shadow-primary/10">
           <CardHeader className="space-y-4 pb-8">
-            <div className="mx-auto h-16 w-16 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
+            <div className="mx-auto h-16 w-16 rounded-2xl bg-primary flex items-center justify-center shadow-lg shadow-primary/30">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -119,7 +119,7 @@ export default function RegisterPage() {
               </svg>
             </div>
             <div className="text-center space-y-2">
-              <CardTitle className="text-3xl font-extrabold text-gray-900 tracking-tight">
+              <CardTitle className="text-3xl font-extrabold text-primary tracking-tight">
                 Join the <span className="text-gradient">Buzz</span>
               </CardTitle>
               <CardDescription className="text-gray-500 font-medium">
@@ -147,12 +147,12 @@ export default function RegisterPage() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-gray-700 font-bold ml-1">Full Name</FormLabel>
+                      <FormLabel className="text-primary font-bold ml-1">Full Name</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="John Doe"
                           {...field}
-                          className="h-11 rounded-xl border-gray-200 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/20 transition-all font-medium"
+                          className="h-11 rounded-xl border-primary/10 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-secondary/20 transition-all font-medium"
                         />
                       </FormControl>
                       <FormMessage className="text-xs font-bold" />
@@ -164,13 +164,13 @@ export default function RegisterPage() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-gray-700 font-bold ml-1">Email</FormLabel>
+                      <FormLabel className="text-primary font-bold ml-1">Email</FormLabel>
                       <FormControl>
                         <Input
                           type="email"
                           placeholder="john.doe@jiscollege.ac.in"
                           {...field}
-                          className="h-11 rounded-xl border-gray-200 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/20 transition-all font-medium"
+                          className="h-11 rounded-xl border-primary/10 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-secondary/20 transition-all font-medium"
                         />
                       </FormControl>
                       <FormMessage className="text-xs font-bold" />
@@ -182,12 +182,12 @@ export default function RegisterPage() {
                   name="jisid"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-gray-700 font-bold ml-1">JIS ID</FormLabel>
+                      <FormLabel className="text-primary font-bold ml-1">JIS ID</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="JIS/2022/XXXX"
                           {...field}
-                          className="h-11 rounded-xl border-gray-200 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/20 transition-all font-medium"
+                          className="h-11 rounded-xl border-primary/10 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-secondary/20 transition-all font-medium"
                         />
                       </FormControl>
                       <FormMessage className="text-xs font-bold" />
@@ -199,13 +199,13 @@ export default function RegisterPage() {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-gray-700 font-bold ml-1">Password</FormLabel>
+                      <FormLabel className="text-primary font-bold ml-1">Password</FormLabel>
                       <FormControl>
                         <Input
                           type="password"
                           placeholder="••••••••"
                           {...field}
-                          className="h-11 rounded-xl border-gray-200 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/20 transition-all font-medium"
+                          className="h-11 rounded-xl border-primary/10 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-secondary/20 transition-all font-medium"
                         />
                       </FormControl>
                       <FormMessage className="text-xs font-bold" />
@@ -214,7 +214,7 @@ export default function RegisterPage() {
                 />
                 <Button
                   type="submit"
-                  className="w-full h-12 rounded-xl bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 font-bold text-lg transition-all hover:scale-[1.02] active:scale-[0.98] mt-2"
+                  className="w-full h-12 rounded-xl bg-primary hover:bg-secondary shadow-lg shadow-primary/20 font-bold text-lg transition-all hover:scale-[1.02] active:scale-[0.98] mt-2"
                   disabled={isLoading}
                 >
                   {isLoading ? "Creating account..." : "Register"}
@@ -223,12 +223,12 @@ export default function RegisterPage() {
             </Form>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4 pb-8">
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent" />
             <div className="text-center text-sm text-gray-500 font-medium">
               Already a member?{" "}
               <Link
                 href="/auth/login"
-                className="text-blue-600 hover:text-blue-800 font-bold decoration-2 underline-offset-4 hover:underline transition-all"
+                className="text-primary hover:text-secondary font-bold decoration-2 underline-offset-4 hover:underline transition-all"
               >
                 Log in instead
               </Link>

@@ -66,11 +66,11 @@ export function EventsFilter() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-3 items-center">
       <div className="relative w-full md:w-64 group">
-        <SearchIcon className="absolute left-3.5 top-3 h-4 w-4 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+        <SearchIcon className="absolute left-3.5 top-3 h-4 w-4 text-gray-400 group-focus-within:text-secondary transition-colors" />
         <Input
           type="text"
           placeholder="Search events..."
-          className="pl-10 h-10 rounded-xl border-white/20 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/20 transition-all font-medium"
+          className="pl-10 h-10 rounded-xl border-primary/10 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-secondary/20 transition-all font-bold"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -107,7 +107,7 @@ export function EventsFilter() {
       <div className="flex gap-2 w-full md:w-auto">
         <Button
           type="submit"
-          className="flex-1 md:flex-none h-10 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 font-bold transition-all hover:scale-105"
+          className="flex-1 md:flex-none h-10 px-6 rounded-xl bg-primary hover:bg-secondary shadow-lg shadow-primary/20 font-bold transition-all hover:scale-105"
         >
           Apply
         </Button>
@@ -115,7 +115,7 @@ export function EventsFilter() {
           type="button"
           variant="ghost"
           onClick={resetFilters}
-          className="flex-1 md:flex-none h-10 px-4 rounded-xl font-bold text-gray-500 hover:text-blue-600 hover:bg-blue-50 transition-all"
+          className="flex-1 md:flex-none h-10 px-4 rounded-xl font-bold text-gray-500 hover:text-secondary hover:bg-secondary/10 transition-all"
         >
           Reset
         </Button>

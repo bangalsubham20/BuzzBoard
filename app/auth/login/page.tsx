@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { motion } from "framer-motion";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -93,69 +94,115 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="container mx-auto flex items-center justify-center min-h-[calc(100vh-64px)] py-8 px-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">
-            Login
-          </CardTitle>
-          <CardDescription className="text-center">
-            Enter your JIS ID and password to access your account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          {error && (
-            <Alert variant="destructive" className="mb-4">
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
-          )}
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              <FormField
-                control={form.control}
-                name="jisid"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>JIS ID</FormLabel>
-                    <FormControl>
-                      <Input placeholder="JIS/2022/0926" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input type="password" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Logging in..." : "Login"}
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-        <CardFooter className="flex flex-col space-y-2">
-          <div className="text-center text-sm text-gray-500">
-            Don&apos;t have an account?{" "}
-            <Link
-              href="/auth/register"
-              className="text-blue-600 hover:text-blue-800 font-medium"
-            >
-              Sign up
-            </Link>
-          </div>
-        </CardFooter>
-      </Card>
+    <div className="min-h-screen bg-gradient-premium flex items-center justify-center py-12 px-4">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-md"
+      >
+        <Card className="glass border-white/20 rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/10">
+          <CardHeader className="space-y-4 pb-8">
+            <div className="mx-auto h-16 w-16 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                <polyline points="10 17 15 12 10 7" />
+                <line x1="15" x2="3" y1="12" y2="12" />
+              </svg>
+            </div>
+            <div className="text-center space-y-2">
+              <CardTitle className="text-3xl font-extrabold text-gray-900 tracking-tight">
+                Welcome <span className="text-gradient">Back</span>
+              </CardTitle>
+              <CardDescription className="text-gray-500 font-medium">
+                Access your JIS College account to continue
+              </CardDescription>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                className="mb-6"
+              >
+                <Alert variant="destructive" className="rounded-2xl border-red-100 bg-red-50/50 backdrop-blur-sm">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription className="font-medium">{error}</AlertDescription>
+                </Alert>
+              </motion.div>
+            )}
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                <FormField
+                  control={form.control}
+                  name="jisid"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 font-bold ml-1">JIS ID</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="JIS/2022/0926"
+                          {...field}
+                          className="h-12 rounded-xl border-gray-200 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/20 transition-all font-medium"
+                        />
+                      </FormControl>
+                      <FormMessage className="text-xs font-bold" />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 font-bold ml-1">Password</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="password"
+                          placeholder="••••••••"
+                          {...field}
+                          className="h-12 rounded-xl border-gray-200 bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/20 transition-all font-medium"
+                        />
+                      </FormControl>
+                      <FormMessage className="text-xs font-bold" />
+                    </FormItem>
+                  )}
+                />
+                <Button
+                  type="submit"
+                  className="w-full h-12 rounded-xl bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 font-bold text-lg transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Verifying..." : "Login"}
+                </Button>
+              </form>
+            </Form>
+          </CardContent>
+          <CardFooter className="flex flex-col space-y-4 pb-8">
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+            <div className="text-center text-sm text-gray-500 font-medium">
+              Don&apos;t have an account?{" "}
+              <Link
+                href="/auth/register"
+                className="text-blue-600 hover:text-blue-800 font-bold decoration-2 underline-offset-4 hover:underline transition-all"
+              >
+                Sign up for free
+              </Link>
+            </div>
+          </CardFooter>
+        </Card>
+      </motion.div>
     </div>
   );
 }

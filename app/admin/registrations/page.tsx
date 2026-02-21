@@ -88,9 +88,9 @@ export default async function AdminRegistrationsPage({
   // Get selected event details if filtering by event
   const selectedEvent = eventId
     ? await prisma.event.findUnique({
-        where: { id: eventId },
-        select: { title: true, date: true, venue: true },
-      })
+      where: { id: eventId },
+      select: { title: true, date: true, venue: true },
+    })
     : null;
 
   // Get statistics

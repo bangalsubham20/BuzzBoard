@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/components/auth-provider";
 import { Header } from "@/components/header";
+import PageTransition from "@/components/page-transition";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +30,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Header />
-            <main className="min-h-screen bg-gray-50">{children}</main>
+            <main className="min-h-screen">
+              <PageTransition>{children}</PageTransition>
+            </main>
             <Toaster />
           </ThemeProvider>
         </AuthProvider>

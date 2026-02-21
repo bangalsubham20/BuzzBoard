@@ -1,146 +1,160 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { EventList } from "@/components/event-list";
 import { getEvents } from "@/lib/data/events";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import type { Event } from "@prisma/client";
 
-export default async function Home() {
-  const events = await getEvents();
+export default function Home() {
+  const [events, setEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    getEvents().then(setEvents);
+  }, []);
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <section className="py-12 md:py-24 lg:py-32 bg-white rounded-lg shadow-sm mb-12">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-blue-700">
-                JIS College Event Management
-              </h1>
-              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-                Discover, register, and participate in exciting events at JIS
-                College of Engineering.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link href="/events">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                  Browse Events
-                </Button>
-              </Link>
-              <Link href="/auth/login">
-                <Button size="lg" variant="outline">
-                  Sign In
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-gradient-premium">
+      <div className="container mx-auto py-12 px-4">
+        {/* Hero Section */}
+        <section className="relative py-20 md:py-32 overflow-hidden rounded-3xl mb-16">
+          <div className="absolute inset-0 bg-blue-600/5 -z-10 blur-3xl opacity-50" />
+          <div className="container px-4 md:px-6 relative z-10">
+            <div className="flex flex-col items-center justify-center space-y-8 text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="space-y-4"
+              >
+                <Badge variant="outline" className="px-4 py-1 text-blue-600 border-blue-200 bg-blue-50/50 backdrop-blur-sm rounded-full">
+                  Campus Life Reimagined
+                </Badge>
+                <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+                  <span className="block">JIS College</span>
+                  <span className="text-gradient">BuzzBoard</span>
+                </h1>
+                <p className="mx-auto max-w-[800px] text-gray-500 md:text-xl/relaxed lg:text-2xl/relaxed font-medium">
+                  Your hub for discovery, connection, and growth. Stay updated with the pulse of JIS College of Engineering.
+                </p>
+              </motion.div>
 
-      <section className="mb-12">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Upcoming Events</h2>
-          <Link href="/events">
-            <Button variant="link" className="text-blue-600">
-              View All
-            </Button>
-          </Link>
-        </div>
-        <EventList events={events.slice(0, 3)} />
-      </section>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="flex flex-wrap items-center justify-center gap-6"
+              >
+                <Link href="/events">
+                  <Button size="lg" className="h-14 px-8 text-lg bg-blue-600 hover:bg-blue-700 shadow-xl shadow-blue-500/20 transition-all hover:scale-105 active:scale-95">
+                    Explore Events
+                  </Button>
+                </Link>
+                <Link href="/auth/register">
+                  <Button size="lg" variant="outline" className="h-14 px-8 text-lg glass transition-all hover:scale-105 active:scale-95">
+                    Join Community
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </section>
 
-      <section className="bg-white rounded-lg shadow-sm p-8 mb-12">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          About JIS College Events
-        </h2>
-        <p className="text-gray-600 mb-4">
-          JIS College of Engineering hosts a variety of academic, cultural, and
-          technical events throughout the year. Our event management system
-          makes it easy for students to discover events, register, and manage
-          their participation.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <div className="flex flex-col items-center text-center p-4">
-            <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-blue-600"
-              >
-                <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
-                <line x1="16" x2="16" y1="2" y2="6"></line>
-                <line x1="8" x2="8" y1="2" y2="6"></line>
-                <line x1="3" x2="21" y1="10" y2="10"></line>
-              </svg>
+        {/* Featured Events */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-20"
+        >
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Upcoming Buzz</h2>
+              <p className="text-gray-500 mt-2 text-lg">Don't miss out on what's happening this month.</p>
             </div>
-            <h3 className="text-lg font-medium text-gray-900">
-              Discover Events
-            </h3>
-            <p className="text-gray-500 mt-2">
-              Browse and search for upcoming events at JIS College.
-            </p>
+            <Link href="/events">
+              <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 group text-lg">
+                View all events
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="ml-2 transition-transform group-hover:translate-x-1"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </Button>
+            </Link>
           </div>
-          <div className="flex flex-col items-center text-center p-4">
-            <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-blue-600"
-              >
-                <polyline points="9 11 12 14 22 4"></polyline>
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-gray-900">
-              Register Easily
-            </h3>
-            <p className="text-gray-500 mt-2">
-              Simple registration process for all college events.
-            </p>
-          </div>
-          <div className="flex flex-col items-center text-center p-4">
-            <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-blue-600"
-              >
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" x2="8" y1="13" y2="13"></line>
-                <line x1="16" x2="8" y1="17" y2="17"></line>
-                <line x1="10" x2="8" y1="9" y2="9"></line>
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-gray-900">
-              Manage Tickets
-            </h3>
-            <p className="text-gray-500 mt-2">
-              Access your event tickets anytime from your dashboard.
-            </p>
-          </div>
-        </div>
-      </section>
+          <EventList events={events.slice(0, 3)} />
+        </motion.section>
+
+        {/* Features Grid */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          {[
+            {
+              title: "Discover Events",
+              desc: "From hackathons to cultural fests, find events that match your passion.",
+              icon: (
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+              )
+            },
+            {
+              title: "Smart Registration",
+              desc: "One-click registration and digital tickets for all college activities.",
+              icon: <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            },
+            {
+              title: "Real-time Access",
+              desc: "Instant updates and QR code scanning for seamless attendance management.",
+              icon: <path d="M12 2v20M2 12h20" />
+            }
+          ].map((feature, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -5 }}
+              className="glass p-8 rounded-3xl transition-all hover:shadow-2xl hover:shadow-blue-500/5 group"
+            >
+              <div className="h-14 w-14 rounded-2xl bg-blue-100/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-blue-600"
+                >
+                  {feature.icon}
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+              <p className="text-gray-500 leading-relaxed">{feature.desc}</p>
+            </motion.div>
+          ))}
+        </section>
+      </div>
     </div>
+  );
+}
+
+function Badge({ children, className, variant }: any) {
+  return (
+    <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${className}`}>
+      {children}
+    </span>
   );
 }

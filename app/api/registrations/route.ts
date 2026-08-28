@@ -3,7 +3,6 @@ import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/authOptions";
 import { z } from "zod";
-import { nanoid } from "nanoid";
 
 // GET all registrations for the current user
 export async function GET(req: Request) {
@@ -71,9 +70,11 @@ export async function POST(req: Request) {
     // Create a new registration
     const newRegistration = await prisma.registration.create({
       data: {
-        id: nanoid(),
         userId: session.user.id,
         eventId: validatedData.eventId,
+      },
+      include: {
+        event: true,
       },
     });
 

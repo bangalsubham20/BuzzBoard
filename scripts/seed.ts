@@ -37,43 +37,62 @@ async function main() {
 
     console.log(`Created users: ${admin.email}, ${student.email}`);
 
-    // Create Events
+    // Create Events with dynamic upcoming and past dates
+    const now = new Date();
+    const in3Days = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000);
+    const in10Days = new Date(now.getTime() + 10 * 24 * 60 * 60 * 1000);
+    const in20Days = new Date(now.getTime() + 20 * 24 * 60 * 60 * 1000);
+    const past7Days = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+
     const events = [
         {
-            title: "Tech Fiesta 2024",
-            description: "Annual technical fest of JIS College of Engineering. Featuring coding competitions, robotics workshops, and tech talks.",
-            date: new Date("2024-04-15T10:00:00Z"),
+            title: "Tech Fiesta 2026",
+            description: "Annual flagship technical fest of JIS College of Engineering. Featuring hackathons, robotics challenges, coding battles, and keynote tech talks.",
+            date: in3Days,
             venue: "Main Auditorium",
             createdBy: admin.id,
         },
         {
-            title: "Cultural Night",
-            description: "A night filled with music, dance, and performances by our talented students.",
-            date: new Date("2024-04-20T18:00:00Z"),
-            venue: "Open Stage",
+            title: "Grand Cultural Night",
+            description: "An extraordinary evening filled with live band performances, dance competitions, and theatrical showcases by student societies.",
+            date: in10Days,
+            venue: "Open Air Stage",
             createdBy: admin.id,
         },
         {
-            title: "Workshop on Next.js",
-            description: "Hands-on workshop on building modern web applications with Next.js 14 and App Router.",
-            date: new Date("2024-05-05T14:00:00Z"),
+            title: "Full-Stack Web Dev Workshop",
+            description: "Hands-on masterclass on building modern web applications with Next.js 15, TypeScript, Tailwind CSS, and Prisma.",
+            date: in20Days,
             venue: "Computer Lab 1",
             createdBy: admin.id,
         },
         {
-            title: "AI & ML Seminar",
-            description: "Exploring the latest trends in Artificial Intelligence and Machine Learning with industry experts.",
-            date: new Date("2024-05-12T11:00:00Z"),
+            title: "AI & Future Tech Summit",
+            description: "Exploring groundbreaking advancements in Generative AI, Machine Learning, and Cloud Computing with industry guest speakers.",
+            date: past7Days,
             venue: "Seminar Hall",
             createdBy: admin.id,
         },
     ];
 
+    const createdEvents = [];
     for (const eventData of events) {
         const event = await prisma.event.create({
             data: eventData,
         });
+        createdEvents.push(event);
         console.log(`Created event: ${event.title}`);
+    }
+
+    // Create sample registration & attendance for testing
+    if (createdEvents.length > 0) {
+        const reg = await prisma.registration.create({
+            data: {
+                userId: student.id,
+                eventId: createdEvents[0].id,
+            },
+        });
+        console.log(`Created sample registration for student: Ticket ID ${reg.ticketId}`);
     }
 
     console.log("Seeding finished.");

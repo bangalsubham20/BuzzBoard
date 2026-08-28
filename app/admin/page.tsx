@@ -102,21 +102,25 @@ export default async function AdminPage() {
                     {events.slice(0, 5).map((event) => (
                       <div
                         key={event.id}
-                        className="flex items-center justify-between p-6 transition-colors hover:bg-primary/5"
+                        className="flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-6 transition-colors hover:bg-primary/5 gap-4"
                       >
                         <div className="flex-1">
-                          <h4 className="font-bold text-lg text-primary">
+                          <h4 className="font-extrabold text-lg text-primary">
                             {event.title}
                           </h4>
-                          <div className="flex items-center text-sm text-gray-500 mt-1 font-bold">
-                            <CalendarIcon className="h-3.5 w-3.5 mr-1.5 text-secondary" />
-                            <span>{formatDate(event.date)}</span>
-                            <span className="mx-2 text-primary/20">•</span>
-                            <MapPinIcon className="h-3.5 w-3.5 mr-1.5 text-secondary" />
-                            <span>{event.venue}</span>
+                          <div className="flex flex-wrap items-center text-sm text-gray-500 mt-1 font-bold gap-y-1">
+                            <span className="flex items-center">
+                              <CalendarIcon className="h-3.5 w-3.5 mr-1.5 text-secondary" />
+                              {formatDate(event.date)}
+                            </span>
+                            <span className="mx-2 text-primary/20 hidden sm:inline">•</span>
+                            <span className="flex items-center">
+                              <MapPinIcon className="h-3.5 w-3.5 mr-1.5 text-secondary" />
+                              {event.venue}
+                            </span>
                           </div>
                         </div>
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-3 self-start sm:self-auto">
                           <Badge
                             className={
                               isEventUpcoming(event.date)

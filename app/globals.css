@@ -45,23 +45,23 @@
 
 :root {
   --radius: 1.25rem;
-  --background: #F7F2EE;
+  --background: #EDE8E4;
   --foreground: #660000;
-  --card: rgba(255, 255, 255, 0.75);
+  --card: rgba(255, 255, 255, 0.85);
   --card-foreground: #660000;
-  --popover: #F7F2EE;
+  --popover: #EDE8E4;
   --popover-foreground: #660000;
   --primary: #660000;
   --primary-foreground: #ffffff;
   --secondary: #E48200;
   --secondary-foreground: #ffffff;
-  --muted: #e6ded8;
-  --muted-foreground: #6c635d;
+  --muted: #e0d8d0;
+  --muted-foreground: #665b50;
   --accent: #E48200;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
-  --border: rgba(102, 0, 0, 0.12);
-  --input: rgba(102, 0, 0, 0.12);
+  --border: rgba(141, 102, 19, 0.15);
+  --input: rgba(141, 102, 19, 0.15);
   --ring: #E48200;
 }
 
@@ -73,10 +73,10 @@
   body {
     @apply bg-background text-foreground;
     background-image:
-      radial-gradient(at 0% 0%, rgba(228, 130, 0, 0.18) 0px, transparent 55%),
-      radial-gradient(at 100% 0%, rgba(102, 0, 0, 0.15) 0px, transparent 55%),
-      radial-gradient(at 50% 100%, rgba(228, 130, 0, 0.08) 0px, transparent 60%),
-      radial-gradient(rgba(102, 0, 0, 0.04) 1px, transparent 0);
+      radial-gradient(at 0% 0%, rgba(141, 102, 19, 0.18) 0px, transparent 55%),
+      radial-gradient(at 100% 0%, rgba(102, 0, 0, 0.12) 0px, transparent 55%),
+      radial-gradient(at 50% 100%, rgba(141, 102, 19, 0.10) 0px, transparent 60%),
+      radial-gradient(rgba(141, 102, 19, 0.05) 1px, transparent 0);
     background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
     background-attachment: fixed;
   }
@@ -84,25 +84,25 @@
 
 @layer utilities {
   .glass {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow: 0 10px 30px -5px rgba(102, 0, 0, 0.08);
   }
 
   .graphic-card {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(228, 130, 0, 0.2);
-    box-shadow: 0 12px 36px -8px rgba(102, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    border: 1px solid rgba(141, 102, 19, 0.22);
+    box-shadow: 0 12px 36px -8px rgba(102, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .graphic-card:hover {
-    border-color: rgba(228, 130, 0, 0.5);
-    box-shadow: 0 20px 45px -10px rgba(102, 0, 0, 0.18), 0 0 20px 2px rgba(228, 130, 0, 0.15);
+    border-color: rgba(141, 102, 19, 0.5);
+    box-shadow: 0 20px 45px -10px rgba(102, 0, 0, 0.18), 0 0 20px 2px rgba(141, 102, 19, 0.18);
   }
 
   .text-gradient {
@@ -113,14 +113,14 @@
   }
 
   .text-gradient-amber {
-    background: linear-gradient(135deg, #E48200 0%, #FFB03A 100%);
+    background: linear-gradient(135deg, #E48200 0%, #8D6613 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .bg-gradient-premium {
-    background: linear-gradient(135deg, #F7F2EE 0%, #ffffff 100%);
+    background: linear-gradient(135deg, #EDE8E4 0%, #F5F0EC 100%);
   }
 
   .bg-primary-gradient {
@@ -128,12 +128,12 @@
   }
 
   .shadow-graphic {
-    box-shadow: 0 12px 30px -5px rgba(102, 0, 0, 0.2), 0 4px 12px -2px rgba(228, 130, 0, 0.25);
+    box-shadow: 0 12px 30px -5px rgba(102, 0, 0, 0.2), 0 4px 12px -2px rgba(141, 102, 19, 0.25);
   }
 
   .graphic-badge {
-    background: rgba(228, 130, 0, 0.12);
-    border: 1px solid rgba(228, 130, 0, 0.3);
+    background: rgba(141, 102, 19, 0.12);
+    border: 1px solid rgba(141, 102, 19, 0.35);
     color: #660000;
     font-weight: 800;
     letter-spacing: 0.05em;

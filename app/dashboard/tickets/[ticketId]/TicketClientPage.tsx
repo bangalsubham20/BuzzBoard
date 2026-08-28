@@ -38,35 +38,35 @@ export default function TicketClientPage({
         </div>
 
         <Card className="overflow-hidden glass border-white/20 rounded-3xl shadow-2xl shadow-primary/5">
-          <CardHeader className="bg-primary/5 border-b border-primary/10 py-8">
-            <div className="flex items-center justify-between">
+          <CardHeader className="bg-primary/5 border-b border-primary/10 py-6 sm:py-8 px-4 sm:px-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center space-x-4">
-                <div className="h-14 w-14 rounded-2xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
-                  <TicketIcon className="h-7 w-7 text-white" />
+                <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20 shrink-0">
+                  <TicketIcon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
                 </div>
                 <div>
-                  <CardTitle className="text-2xl font-black text-primary tracking-tight">Event Ticket</CardTitle>
-                  <p className="text-sm font-bold text-primary/40 uppercase tracking-widest">
+                  <CardTitle className="text-xl sm:text-2xl font-black text-primary tracking-tight">Event Ticket</CardTitle>
+                  <p className="text-xs font-bold text-primary/40 uppercase tracking-widest">
                     JIS College of Engineering
                   </p>
                 </div>
               </div>
               <Badge
-                className={`${isUpcoming ? "bg-secondary text-white" : "bg-primary/10 text-primary/40"} border-none px-4 py-1.5 font-bold rounded-full`}
+                className={`${isUpcoming ? "bg-secondary text-white" : "bg-primary/10 text-primary/40"} border-none px-4 py-1.5 font-bold rounded-full w-fit`}
               >
                 {isUpcoming ? "Active Ticket" : "Past Event"}
               </Badge>
             </div>
           </CardHeader>
 
-          <CardContent className="p-8">
+          <CardContent className="p-4 sm:p-8">
             <div className="space-y-8">
               {/* Event Details */}
               <div>
-                <h2 className="text-3xl font-extrabold text-primary mb-4 tracking-tight leading-tight">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-primary mb-4 tracking-tight leading-tight">
                   {registration.event.title}
                 </h2>
-                <p className="text-gray-600 font-medium leading-relaxed">
+                <p className="text-gray-600 font-medium leading-relaxed text-sm sm:text-base">
                   {registration.event.description}
                 </p>
               </div>
@@ -74,7 +74,7 @@ export default function TicketClientPage({
               <Separator className="bg-primary/5" />
 
               {/* Event Information Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="h-10 w-10 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
@@ -136,20 +136,20 @@ export default function TicketClientPage({
               <Separator className="bg-primary/5" />
 
               {/* Ticket ID Section */}
-              <div className="bg-primary-gradient p-6 rounded-3xl text-white shadow-xl shadow-primary/20 relative overflow-hidden group">
+              <div className="bg-primary-gradient p-5 sm:p-6 rounded-3xl text-white shadow-xl shadow-primary/20 relative overflow-hidden group">
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
                   <TicketIcon size={80} />
                 </div>
-                <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                  <div>
+                <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="min-w-0">
                     <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">
                       Ticket ID
                     </p>
-                    <p className="text-xl font-mono font-black tracking-wider">
+                    <p className="text-base sm:text-xl font-mono font-black tracking-wider break-all">
                       {registration.ticketId}
                     </p>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
+                  <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20 w-fit">
                     <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-0.5">Status</p>
                     <p className="font-black uppercase text-sm">{isUpcoming ? "Valid" : "Expired"}</p>
                   </div>

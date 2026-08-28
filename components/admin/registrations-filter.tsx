@@ -99,7 +99,7 @@ export function RegistrationsFilter({ events }: RegistrationsFilterProps) {
       </Select>
 
       <div className="flex gap-2">
-        <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+        <Button type="submit" className="bg-primary hover:bg-secondary">
           Apply
         </Button>
         <Button type="button" variant="outline" onClick={resetFilters}>

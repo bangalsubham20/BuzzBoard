@@ -77,28 +77,28 @@ export function AnalyticsDashboard({ data }: AnalyticsDashboardProps) {
                             <AreaChart data={registrationTrends}>
                                 <defs>
                                     <linearGradient id="colorReg" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#339CD5" stopOpacity={0.3} />
-                                        <stop offset="95%" stopColor="#339CD5" stopOpacity={0} />
+                                        <stop offset="5%" stopColor="#E48200" stopOpacity={0.3} />
+                                        <stop offset="95%" stopColor="#E48200" stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
-                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#DCDEEA" />
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e6ded8" />
                                 <XAxis
                                     dataKey="date"
                                     axisLine={false}
                                     tickLine={false}
-                                    tick={{ fill: '#273574', fontSize: 10, fontWeight: 700 }}
+                                    tick={{ fill: '#660000', fontSize: 10, fontWeight: 700 }}
                                     dy={10}
                                 />
                                 <YAxis
                                     axisLine={false}
                                     tickLine={false}
-                                    tick={{ fill: '#273574', fontSize: 10, fontWeight: 700 }}
+                                    tick={{ fill: '#660000', fontSize: 10, fontWeight: 700 }}
                                 />
                                 <Tooltip
-                                    contentStyle={{ backgroundColor: 'white', borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px -5px rgba(39, 53, 116, 0.1)' }}
-                                    itemStyle={{ color: '#273574', fontWeight: 700 }}
+                                    contentStyle={{ backgroundColor: 'white', borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px -5px rgba(102, 0, 0, 0.1)' }}
+                                    itemStyle={{ color: '#660000', fontWeight: 700 }}
                                 />
-                                <Area type="monotone" dataKey="count" stroke="#339CD5" strokeWidth={3} fillOpacity={1} fill="url(#colorReg)" />
+                                <Area type="monotone" dataKey="count" stroke="#E48200" strokeWidth={3} fillOpacity={1} fill="url(#colorReg)" />
                             </AreaChart>
                         </ResponsiveContainer>
                     </CardContent>
@@ -116,24 +116,24 @@ export function AnalyticsDashboard({ data }: AnalyticsDashboardProps) {
                     <CardContent className="p-6 h-[350px]">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={hourlyAttendance}>
-                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#DCDEEA" />
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e6ded8" />
                                 <XAxis
                                     dataKey="hour"
                                     axisLine={false}
                                     tickLine={false}
-                                    tick={{ fill: '#273574', fontSize: 10, fontWeight: 700 }}
+                                    tick={{ fill: '#660000', fontSize: 10, fontWeight: 700 }}
                                     dy={10}
                                 />
                                 <YAxis
                                     axisLine={false}
                                     tickLine={false}
-                                    tick={{ fill: '#273574', fontSize: 10, fontWeight: 700 }}
+                                    tick={{ fill: '#660000', fontSize: 10, fontWeight: 700 }}
                                 />
                                 <Tooltip
-                                    contentStyle={{ backgroundColor: 'white', borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px -5px rgba(39, 53, 116, 0.1)' }}
-                                    itemStyle={{ color: '#273574', fontWeight: 700 }}
+                                    contentStyle={{ backgroundColor: 'white', borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px -5px rgba(102, 0, 0, 0.1)' }}
+                                    itemStyle={{ color: '#660000', fontWeight: 700 }}
                                 />
-                                <Bar dataKey="count" fill="#273574" radius={[6, 6, 0, 0]} />
+                                <Bar dataKey="count" fill="#660000" radius={[6, 6, 0, 0]} />
                             </BarChart>
                         </ResponsiveContainer>
                     </CardContent>
@@ -151,7 +151,7 @@ export function AnalyticsDashboard({ data }: AnalyticsDashboardProps) {
                     <CardContent className="p-8 h-[400px]">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={eventStats} layout="vertical" margin={{ left: 50 }}>
-                                <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#DCDEEA" />
+                                <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e6ded8" />
                                 <XAxis type="number" hide />
                                 <YAxis
                                     dataKey="title"
@@ -159,14 +159,14 @@ export function AnalyticsDashboard({ data }: AnalyticsDashboardProps) {
                                     axisLine={false}
                                     tickLine={false}
                                     width={150}
-                                    tick={{ fill: '#273574', fontSize: 11, fontWeight: 800 }}
+                                    tick={{ fill: '#660000', fontSize: 11, fontWeight: 800 }}
                                 />
                                 <Tooltip
-                                    contentStyle={{ backgroundColor: 'white', borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px -5px rgba(39, 53, 116, 0.1)' }}
+                                    contentStyle={{ backgroundColor: 'white', borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px -5px rgba(102, 0, 0, 0.1)' }}
                                     itemStyle={{ fontWeight: 700 }}
                                 />
-                                <Bar dataKey="registrations" name="Registrations" fill="#339CD5" radius={[0, 6, 6, 0]} barSize={20} />
-                                <Bar dataKey="attendance" name="Attendance" fill="#273574" radius={[0, 6, 6, 0]} barSize={20} />
+                                <Bar dataKey="registrations" name="Registrations" fill="#E48200" radius={[0, 6, 6, 0]} barSize={20} />
+                                <Bar dataKey="attendance" name="Attendance" fill="#660000" radius={[0, 6, 6, 0]} barSize={20} />
                             </BarChart>
                         </ResponsiveContainer>
                     </CardContent>

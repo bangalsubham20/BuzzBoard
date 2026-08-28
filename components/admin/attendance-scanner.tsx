@@ -148,27 +148,34 @@ export function AttendanceScanner() {
         </CardHeader>
         <CardContent className="p-8">
           <form onSubmit={handleScan} className="space-y-4">
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Input
                 type="text"
                 placeholder="Enter ticket ID or scan QR code"
                 value={ticketId}
                 onChange={(e) => setTicketId(e.target.value)}
-                className="flex-1"
+                className="flex-1 h-12 rounded-2xl border-primary/15 bg-white/60 font-medium"
                 autoFocus
               />
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setIsScannerOpen(true)}
-                disabled={isLoading}
-              >
-                <CameraIcon className="h-4 w-4 mr-2" />
-                Scan
-              </Button>
-              <Button type="submit" disabled={isLoading || !ticketId.trim()}>
-                {isLoading ? "Processing..." : "Mark Attendance"}
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setIsScannerOpen(true)}
+                  disabled={isLoading}
+                  className="flex-1 sm:flex-none h-12 px-5 rounded-2xl glass border-primary/20 text-primary font-bold hover:bg-primary/5 transition-all"
+                >
+                  <CameraIcon className="h-5 w-5 mr-2 text-secondary" />
+                  Scan QR
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={isLoading || !ticketId.trim()}
+                  className="flex-1 sm:flex-none h-12 px-6 rounded-2xl bg-primary hover:bg-secondary text-white shadow-graphic font-extrabold transition-all"
+                >
+                  {isLoading ? "Validating..." : "Mark Present"}
+                </Button>
+              </div>
             </div>
           </form>
 

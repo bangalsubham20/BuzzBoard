@@ -28,10 +28,15 @@ export function FeaturesGrid() {
             {features.map((feature, i) => (
                 <motion.div
                     key={i}
-                    whileHover={{ y: -5 }}
-                    className="glass p-8 rounded-3xl transition-all hover:shadow-2xl hover:shadow-primary/5 group"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    className="graphic-card p-8 rounded-[2rem] relative group overflow-hidden"
                 >
-                    <div className="h-14 w-14 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    {/* Index Tag */}
+                    <div className="absolute top-6 right-6 text-3xl font-black text-secondary/25 group-hover:text-secondary/50 transition-colors font-mono">
+                        0{i + 1}
+                    </div>
+
+                    <div className="h-16 w-16 rounded-2xl bg-secondary/15 border border-secondary/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all shadow-md shadow-secondary/10">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="28"
@@ -39,16 +44,20 @@ export function FeaturesGrid() {
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            strokeWidth="2"
+                            strokeWidth="2.5"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            className="text-primary"
+                            className="text-primary group-hover:text-white transition-colors"
                         >
                             {feature.icon}
                         </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-primary mb-3">{feature.title}</h3>
-                    <p className="text-gray-500 leading-relaxed font-medium">{feature.desc}</p>
+                    <h3 className="text-2xl font-extrabold text-primary mb-3 tracking-tight group-hover:text-secondary transition-colors">
+                        {feature.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed font-semibold">
+                        {feature.desc}
+                    </p>
                 </motion.div>
             ))}
         </section>

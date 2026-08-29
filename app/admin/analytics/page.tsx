@@ -15,15 +15,15 @@ export default async function AdminAnalyticsPage() {
 
     return (
         <div className="min-h-screen bg-gradient-premium">
-            <div className="container mx-auto py-12 px-4">
-                <div className="mb-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
+                <div className="mb-8 sm:mb-12">
                     <Link href="/admin">
                         <Button variant="link" className="pl-0 text-primary hover:text-secondary font-bold transition-colors mb-4">
                             ← Back to Command Center
                         </Button>
                     </Link>
-                    <h1 className="text-4xl font-extrabold text-primary tracking-tight">
-                        Advanced <span className="text-gradient">Analytics</span>
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary tracking-tight">
+                        Analytics <span className="text-gradient">Hub</span>
                     </h1>
                     <p className="text-gray-600 mt-2 text-lg font-medium">
                         Strategic insights into JIS College campus engagement.

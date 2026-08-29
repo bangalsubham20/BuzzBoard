@@ -38,7 +38,7 @@ export function Header() {
 
   return (
     <header className="graphic-card border-b border-secondary/20 sticky top-0 z-50 backdrop-blur-2xl">
-      <div className="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 md:py-4 flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="flex items-center group">
             <div className="h-10 w-10 md:h-11 md:w-11 rounded-2xl bg-primary-gradient flex items-center justify-center mr-2.5 md:mr-3 group-hover:rotate-12 transition-transform shadow-graphic border border-secondary/30">

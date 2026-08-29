@@ -59,8 +59,9 @@ export default async function EventPage({
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
-      <div className="mb-6">
+    <div className="container mx-auto py-8 px-4">
+      <div className="max-w-4xl mx-auto">
+        <div className="mb-6">
           <Link href="/events">
             <Button variant="link" className="pl-0 text-primary hover:text-secondary font-bold transition-colors">
               ← Back to Events
@@ -187,5 +188,6 @@ export default async function EventPage({
           </div>
         </div>
       </div>
-    );
+    </div>
+  );
 }

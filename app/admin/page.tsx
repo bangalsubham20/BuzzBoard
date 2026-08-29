@@ -33,13 +33,13 @@ export default async function AdminPage() {
 
   return (
     <div className="min-h-screen bg-gradient-premium">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 sm:mb-12 gap-6">
+      <div className="container mx-auto py-12 px-4">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12 gap-6">
           <div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary tracking-tight">
+            <h1 className="text-4xl font-extrabold text-primary tracking-tight">
               Admin <span className="text-gradient">Command Center</span>
             </h1>
-            <p className="text-gray-600 mt-2 text-base sm:text-lg font-medium">
+            <p className="text-gray-600 mt-2 text-lg font-medium">
               Monitor campus activity and orchestrate upcoming events.
             </p>
           </div>

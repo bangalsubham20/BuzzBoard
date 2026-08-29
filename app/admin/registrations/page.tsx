@@ -108,12 +108,12 @@ export default async function AdminRegistrationsPage({
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
-      <div className="mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary tracking-tight">
+    <div className="container mx-auto py-12 px-4">
+      <div className="mb-12">
+        <h1 className="text-4xl font-extrabold text-primary tracking-tight">
           Manage <span className="text-gradient">Registrations</span>
         </h1>
-        <p className="text-gray-600 mt-2 text-base sm:text-lg font-medium">
+        <p className="text-gray-600 mt-2 text-lg font-medium">
           {selectedEvent
             ? `Registrations for "${selectedEvent.title}"`
             : "Monitor and manage student event participation"}
